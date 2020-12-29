@@ -1,43 +1,28 @@
 package nirmalya.aatithya.restmodule.common.utils;
 
-import nirmalya.aatithya.restmodule.recruitment.model.RequistionRestModel;
+import nirmalya.aatithya.restmodule.recruitment.model.AddRecruitentModel;
 
 public class GenerateReqParameter {
-	public static String getAddreqParam(RequistionRestModel form) {
+	public static String getAddreqParam(AddRecruitentModel form) {
 		String s = "";
-
-		if (form.getRequistionId() != null && form.getRequistionId() != "") {
-			s = s + "@p_requistionId='" + form.getRequistionId() + "',";
-		}
+		String qItem = "";
+		String addReq = "";
 		
-		  if (form.getJobCode() != null && form.getJobCode() != "") { s = s +
-		  "@p_jobcode='" + form.getJobCode() + "',"; }
-		 
-		if (form.getJobTitle() != null && form.getJobTitle() != "") {
-			s = s + "@p_jobtitle='" + form.getJobTitle() + "',";
+		for (int i =0; i < form.getBenefits().size() ; i++) {
+			qItem = qItem + "(@p_requisitionId,\"" + form.getBenefits().get(i) + "\",\"" + form.getCreatedBy()+ "\",\"" + form.getCreatedBy() + "\"),";
 		}
+		qItem = qItem.substring(0, qItem.length() - 1);
 
-
-		if (form.getDepartment() != null && form.getDepartment() != "") {
-			s = s + "@p_department='" + form.getDepartment() + "',";
-		}
-
-		if (form.getHiringManager() != null && form.getHiringManager() != "") {
-			s = s + "@p_hiringmanager='" + form.getHiringManager() + "',";
-		}
-
-		if (form.getOnboardBy() != null && form.getOnboardBy() != "") {
-			s = s + "@p_onboard='" + DateFormatter.getStringDate(form.getOnboardBy()) + "',";
-		}
-
-		if (form.getBudget() != null) {
-			s = s + "@p_budget='" + form.getBudget() + "',";
-		}
-
-		if (form.getCreatedBy() != null && form.getCreatedBy() != "") {
-			s = s + "@p_CreatedBy='" + form.getCreatedBy() + "',";
-		}
-
+		addReq = addReq + "(@p_requisitionId,\"" + form.getJobTitle() + "\",\"" + form.getJobType() + "\",\"" + form.getJobLocation() + "\",\"" + 
+				form.getMinEducation() + "\",\"" + form.getMinSalary() + "\",\"" + form.getMaxSalary() + "\",\"" + form.getDepartment() + "\",\"" +
+				form.getHiringManager() + "\",\"" + form.getNoPosition() + "\",\"" + form.getWorkHour() + "\",\"" + form.getBand() + "\",\"" + form.getJoinDate() + "\",\"" + 
+				form.getPositionSummary() + "\",\"" + form.getPositionResponsibility() + "\",\"" + form.getRequiredSkillExperience() +
+				"\",\"" + form.getApprover() + "\",\"" + form.getAbout() + "\",\"" + form.getCreatedBy()+ "\",\"" + form.getCreatedBy() +"\",1),";
+		addReq = addReq.substring(0, addReq.length() - 1);
+		
+		s = s + "@p_benefitsData='" + qItem + "',";
+		s = s + "@p_addRequisition='" + addReq + "',";
+		
 		if (s != "") {
 			s = s.substring(0, s.length() - 1);
 

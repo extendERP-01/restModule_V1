@@ -92,7 +92,7 @@ public class HrmsEmployeeRestController {
 	 * 
 	 * @return department list
 	 */
-	@GetMapping(value = "getCountryList")
+	@GetMapping(value = "getCountryList1")
 	public List<DropDownModel> getCountryList() {
 
 		logger.info("Method : getCountryList starts");

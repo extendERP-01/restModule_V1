@@ -16,6 +16,8 @@ import nirmalya.aatithya.restmodule.common.utils.DropDownModel;
 import nirmalya.aatithya.restmodule.common.utils.JsonResponse;
 import nirmalya.aatithya.restmodule.master.dao.LocationMasterDao;
 import nirmalya.aatithya.restmodule.master.model.LocationMasterModel;
+import nirmalya.aatithya.restmodule.master.model.LocationRoomModel;
+import nirmalya.aatithya.restmodule.master.model.LocationSectionModel;
 
 /**
  * @author NirmalyaLabs
@@ -38,12 +40,52 @@ public class LocationMasterRestController {
 		return locationMasterDao.getLocationTypeList();
 	}
 	
+	@RequestMapping(value = "getRoomTypeList", method = { RequestMethod.GET })
+	public List<DropDownModel> getRoomTypeList() {
+		logger.info("Method : getRoomTypeList starts");
+		
+		logger.info("Method : getRoomTypeList ends");
+		return locationMasterDao.getRoomTypeList();
+	}
+	
 	@RequestMapping(value = "getCountryListForLocation", method = { RequestMethod.GET })
 	public List<DropDownModel> getCountryListForLocation() {
 		logger.info("Method : getCountryListForLocation starts");
 		
 		logger.info("Method : getCountryListForLocation ends");
 		return locationMasterDao.getCountryListForLocation();
+	}
+	
+	@RequestMapping(value = "viewStateLocListByCountry", method = { RequestMethod.GET })
+	public List<DropDownModel> viewStateLocListByCountry(@RequestParam String id) {
+		logger.info("Method : viewStateLocListByCountry starts");
+		
+		logger.info("Method : viewStateLocListByCountry ends");
+		return locationMasterDao.viewStateLocListByCountry(id);
+	}
+	
+	@RequestMapping(value = "viewCityLocListByState", method = { RequestMethod.GET })
+	public List<DropDownModel> viewCityLocListByState(@RequestParam String id) {
+		logger.info("Method : viewCityLocListByState starts");
+		
+		logger.info("Method : viewCityLocListByState ends");
+		return locationMasterDao.viewCityLocListByState(id);
+	}
+	
+	@RequestMapping(value = "viewSectionListByFloor", method = { RequestMethod.GET })
+	public List<LocationSectionModel> viewSectionListByFloor(@RequestParam String id) {
+		logger.info("Method : viewSectionListByFloor starts");
+		
+		logger.info("Method : viewSectionListByFloor ends");
+		return locationMasterDao.viewSectionListByFloor(id);
+	}
+	
+	@RequestMapping(value = "viewRoomListBySection", method = { RequestMethod.GET })
+	public List<LocationRoomModel> viewRoomListBySection(@RequestParam String id) {
+		logger.info("Method : viewRoomListBySection starts");
+		
+		logger.info("Method : viewRoomListBySection ends");
+		return locationMasterDao.viewRoomListBySection(id);
 	}
 	
 	@RequestMapping(value = "getLocationList", method = { RequestMethod.GET })
@@ -70,11 +112,131 @@ public class LocationMasterRestController {
 		return locationMasterDao.getCityForLocation(id);
 	}
 	
+	@RequestMapping(value = "getLocationDetailsById", method = { RequestMethod.GET })
+	public ResponseEntity<JsonResponse<LocationMasterModel>> getLocationDetailsById(@RequestParam String id) {
+		logger.info("Method : getLocationDetailsById starts");
+		
+		logger.info("Method : getLocationDetailsById ends");
+		return locationMasterDao.getLocationDetailsById(id);
+	}
+	
+	@RequestMapping(value = "getLocationFloorDetails", method = { RequestMethod.GET })
+	public ResponseEntity<JsonResponse<List<LocationMasterModel>>> getLocationFloorDetails(@RequestParam String id) {
+		logger.info("Method : getLocationFloorDetails starts");
+		
+		logger.info("Method : getLocationFloorDetails ends");
+		return locationMasterDao.getLocationFloorDetails(id);
+	}
+	
+	@RequestMapping(value = "getLocationRoomDetails", method = { RequestMethod.POST })
+	public ResponseEntity<JsonResponse<List<LocationRoomModel>>> getLocationRoomDetails(@RequestBody List<String> id) {
+		logger.info("Method : getLocationRoomDetails starts");
+		
+		logger.info("Method : getLocationRoomDetails ends");
+		return locationMasterDao.getLocationRoomDetails(id);
+	}
+	
+	@RequestMapping(value = "countFloorWiseRoom", method = { RequestMethod.POST })
+	public List<DropDownModel> countFloorWiseRoom(@RequestBody List<String> id) {
+		logger.info("Method : countFloorWiseRoom starts");
+		
+		logger.info("Method : countFloorWiseRoom ends");
+		return locationMasterDao.countFloorWiseRoom(id);
+	}
+	
+	@RequestMapping(value = "getLocationListing", method = { RequestMethod.GET })
+	public ResponseEntity<JsonResponse<List<LocationMasterModel>>> getLocationListing() {
+		logger.info("Method : getLocationListing starts");
+		
+		logger.info("Method : getLocationListing ends");
+		return locationMasterDao.getLocationListing();
+	}
+	
 	@RequestMapping(value = "saveLocationMaster", method = { RequestMethod.POST })
 	public ResponseEntity<JsonResponse<LocationMasterModel>> saveLocationMaster(@RequestBody LocationMasterModel location) {
 		logger.info("Method : saveLocationMaster starts");
 		
 		logger.info("Method : saveLocationMaster ends");
 		return locationMasterDao.saveLocationMaster(location);
+	}
+	
+	@RequestMapping(value = "saveFloorMaster", method = { RequestMethod.POST })
+	public ResponseEntity<JsonResponse<LocationMasterModel>> saveFloorMaster(@RequestBody LocationMasterModel location) {
+		logger.info("Method : saveFloorMaster starts");
+		
+		logger.info("Method : saveFloorMaster ends");
+		return locationMasterDao.saveFloorMaster(location);
+	}
+	
+	@RequestMapping(value = "saveRoomMaster", method = { RequestMethod.POST })
+	public ResponseEntity<JsonResponse<LocationRoomModel>> saveRoomMaster(@RequestBody LocationRoomModel location) {
+		logger.info("Method : saveRoomMaster starts");
+		
+		logger.info("Method : saveRoomMaster ends");
+		return locationMasterDao.saveRoomMaster(location);
+	}
+	
+	@RequestMapping(value = "saveSectionMaster", method = { RequestMethod.POST })
+	public ResponseEntity<JsonResponse<LocationSectionModel>> saveSectionMaster(@RequestBody LocationSectionModel location) {
+		logger.info("Method : saveSectionMaster starts");
+		
+		logger.info("Method : saveSectionMaster ends");
+		return locationMasterDao.saveSectionMaster(location);
+	}
+	
+	@RequestMapping(value = "deleteFloorMaster", method = { RequestMethod.GET })
+	public ResponseEntity<JsonResponse<Object>> deleteFloorMaster(@RequestParam String id, @RequestParam String createdBy) {
+		logger.info("Method : deleteFloorMaster starts");
+		
+		logger.info("Method : deleteFloorMaster ends");
+		return locationMasterDao.deleteFloorMaster(id,createdBy);
+	}
+	
+	@RequestMapping(value = "deleteLocationFile", method = { RequestMethod.GET })
+	public ResponseEntity<JsonResponse<Object>> deleteLocationFile(@RequestParam String id, @RequestParam String createdBy) {
+		logger.info("Method : deleteLocationFile starts");
+		
+		logger.info("Method : deleteLocationFile ends");
+		return locationMasterDao.deleteLocationFile(id,createdBy);
+	}
+	
+	@RequestMapping(value = "deleteSectionMaster", method = { RequestMethod.GET })
+	public ResponseEntity<JsonResponse<Object>> deleteSectionMaster(@RequestParam String id, @RequestParam String createdBy) {
+		logger.info("Method : deleteSectionMaster starts");
+		
+		logger.info("Method : deleteSectionMaster ends");
+		return locationMasterDao.deleteSectionMaster(id,createdBy);
+	}
+	
+	@RequestMapping(value = "deleteRoomMaster", method = { RequestMethod.GET })
+	public ResponseEntity<JsonResponse<Object>> deleteRoomMaster(@RequestParam String id, @RequestParam String createdBy) {
+		logger.info("Method : deleteRoomMaster starts");
+		
+		logger.info("Method : deleteRoomMaster ends");
+		return locationMasterDao.deleteRoomMaster(id,createdBy);
+	}
+	
+	@RequestMapping(value = "deleteLocationMaster", method = { RequestMethod.POST })
+	public ResponseEntity<JsonResponse<Object>> deleteLocationMaster(@RequestBody List<DropDownModel> locationList) {
+		logger.info("Method : deleteLocationMaster starts");
+		
+		logger.info("Method : deleteLocationMaster ends");
+		return locationMasterDao.deleteLocationMaster(locationList);
+	}
+	
+	@RequestMapping(value = "editFloorMaster", method = { RequestMethod.GET })
+	public ResponseEntity<JsonResponse<LocationMasterModel>> editFloorMaster(@RequestParam String id) {
+		logger.info("Method : editFloorMaster starts");
+		
+		logger.info("Method : editFloorMaster ends");
+		return locationMasterDao.editFloorMaster(id);
+	}
+	
+	@RequestMapping(value = "editSectionMaster", method = { RequestMethod.GET })
+	public ResponseEntity<JsonResponse<LocationSectionModel>> editSectionMaster(@RequestParam String id) {
+		logger.info("Method : editSectionMaster starts");
+		
+		logger.info("Method : editSectionMaster ends");
+		return locationMasterDao.editSectionMaster(id);
 	}
 }

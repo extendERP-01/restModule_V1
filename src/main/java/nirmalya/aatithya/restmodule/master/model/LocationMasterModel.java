@@ -19,6 +19,8 @@ public class LocationMasterModel {
 	private String createdBy;
 	private String fileLocation;
 	private String createdDate;
+	private String floorId;
+	private Integer floorSlNo;
 	
 	public LocationMasterModel() {
 		super();
@@ -27,7 +29,7 @@ public class LocationMasterModel {
 
 	public LocationMasterModel(Object locationId, Object locationName, Object locationCode, Object locationType,
 			Object locCountry, Object locState, Object locCity, Object locStreet, Object locVirtual, Object locStatus,
-			Object createdBy, Object fileLocation, Object createdDate) {
+			Object createdBy, Object fileLocation, Object createdDate, Object floorId, Object floorSlNo) {
 		super();
 		this.locationId = (String) locationId;
 		this.locationName = (String) locationName;
@@ -42,6 +44,8 @@ public class LocationMasterModel {
 		this.createdBy = (String) createdBy;
 		this.fileLocation = (String) fileLocation;
 		this.createdDate = (String) createdDate;
+		this.floorId = (String) floorId;
+		this.floorSlNo = (Integer) floorSlNo;
 	}
 
 	public String getLocationId() {
@@ -146,6 +150,22 @@ public class LocationMasterModel {
 
 	public void setCreatedDate(String createdDate) {
 		this.createdDate = createdDate;
+	}
+
+	public String getFloorId() {
+		return floorId;
+	}
+
+	public void setFloorId(String floorId) {
+		this.floorId = floorId;
+	}
+
+	public Integer getFloorSlNo() {
+		return floorSlNo;
+	}
+
+	public void setFloorSlNo(Integer floorSlNo) {
+		this.floorSlNo = floorSlNo;
 	}
 
 	@Override

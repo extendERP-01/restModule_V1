@@ -16,7 +16,6 @@ import nirmalya.aatithya.restmodule.common.utils.DataTableRequest;
 import nirmalya.aatithya.restmodule.common.utils.DropDownModel;
 import nirmalya.aatithya.restmodule.common.utils.JsonResponse;
 import nirmalya.aatithya.restmodule.inventory.dao.InventoryStockTransferDao;
-import nirmalya.aatithya.restmodule.inventory.model.RestInventoryGoodsReceiveModel;
 import nirmalya.aatithya.restmodule.inventory.model.RestInventoryStockTransferModel;
 import nirmalya.aatithya.restmodule.inventory.model.StockItemModel;
 

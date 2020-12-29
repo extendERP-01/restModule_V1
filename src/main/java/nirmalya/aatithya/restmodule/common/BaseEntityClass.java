@@ -1982,6 +1982,46 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 				@StoredProcedureParameter(mode = ParameterMode.IN, name = "actionValue", type = String.class) }
 
 		),
+		@NamedStoredProcedureQuery(name = "warehouseRoutine", procedureName = "warehouse_Routines", parameters = {
+				@StoredProcedureParameter(mode = ParameterMode.IN, name = "actionType", type = String.class),
+				@StoredProcedureParameter(mode = ParameterMode.IN, name = "actionValue", type = String.class) }
+
+		),
+		
+		@NamedStoredProcedureQuery(name = "inventoryStockRoutines", procedureName = "inventory_stock_Routines", parameters = {
+				@StoredProcedureParameter(mode = ParameterMode.IN, name = "actionType", type = String.class),
+				@StoredProcedureParameter(mode = ParameterMode.IN, name = "actionValue", type = String.class) }
+
+		),
+		
+		/*
+		 * for inventory requisition
+		 */
+		@NamedStoredProcedureQuery(name = "inventoryRequisitionRoutines", procedureName = "inventory_Requisition_Routines", parameters = {
+				@StoredProcedureParameter(mode = ParameterMode.IN, name = "actionType", type = String.class),
+				@StoredProcedureParameter(mode = ParameterMode.IN, name = "actionValue", type = String.class) }
+
+		),
+		
+		/*
+		 * for vendor master
+		 */
+		@NamedStoredProcedureQuery(name = "vendorMasterRoutines", procedureName = "master_vendorMasterRoutines", parameters = {
+				@StoredProcedureParameter(mode = ParameterMode.IN, name = "actionType", type = String.class),
+				@StoredProcedureParameter(mode = ParameterMode.IN, name = "actionValue", type = String.class) }
+
+				),
+		
+		/*
+		 *  for manage employee
+		 */
+		@NamedStoredProcedureQuery(name = "employeeMasterRoutines", procedureName = "employee_mst_Routines", parameters = {
+				@StoredProcedureParameter(mode = ParameterMode.IN, name = "actionType", type = String.class),
+				@StoredProcedureParameter(mode = ParameterMode.IN, name = "actionValue", type = String.class) }
+
+		),
+		
+		
 		@NamedStoredProcedureQuery(name = "questionTypeRoutines", procedureName = "hrms_questionTypeRoutines", parameters = {
 				@StoredProcedureParameter(mode = ParameterMode.IN, name = "actionType", type = String.class),
 				@StoredProcedureParameter(mode = ParameterMode.IN, name = "actionValue", type = String.class) })
